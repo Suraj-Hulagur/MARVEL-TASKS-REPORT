@@ -98,17 +98,10 @@ The goal was to get familiar with navigation, file handling, and folder creation
 ---
 
 ###  Photos
-Since I worked on an Ubuntu system, I took **photos of the terminal output** 
-
 ![Ubuntu Terminal 1](https://i.postimg.cc/3J7KK2gF/Whats-App-Image-2025-09-09-at-07-59-53-67789f4c.jpg)  
 
 ![Ubuntu Terminal 2](https://i.postimg.cc/kXc7DDs3/Whats-App-Image-2025-09-09-at-07-59-54-429a4e62.jpg)  
-
 ---
-
-###  Conclusion
-This task helped me understand how to work efficiently with the **Linux command line**.  
-I learned folder creation, file handling, and combining text files using simple commands. 
 
 <hr style="border:2.5px solid white; margin: 35px 0;">
 
@@ -137,8 +130,6 @@ The main focus was on understanding **gradient descent**, error minimization, an
 ---
 
 ### Screenshots
-Below are screenshots showing my implementation and results:  
-
 ![Linear Regression 1](https://i.postimg.cc/K8WJHLGX/Screenshot-2025-09-11-152950.png)  
 
 ![Linear Regression 2](https://i.postimg.cc/13Sq53vg/Screenshot-2025-09-11-153028.png)  
@@ -178,8 +169,6 @@ The challenge was to **decode a scrambled matrix** and reveal the hidden image.
 ---
 
 ### Screenshots
-Here is the output after decoding the matrix:  
-
 ![Matrix Puzzle](https://i.postimg.cc/L8wCC7RB/Screenshot-2025-09-11-153408.png)  
 
 ---
@@ -209,7 +198,6 @@ The website is responsive and styled using simple CSS for a clean look.
 ---
 
 ### Screenshots  
-
 ![Portfolio Screenshot 1](https://i.postimg.cc/nz4rJJ7K/Screenshot-2025-09-11-171206.png)  
 
 ![Portfolio Screenshot 2](https://i.postimg.cc/sxPT7vWB/Screenshot-2025-09-11-171215.png)  
@@ -230,19 +218,9 @@ Markdown makes writing easy because it uses plain text with simple symbols to ad
 It is device agnostic and ensures consistent formatting across platforms.  
 
 ---
-
-### What I Did
-- Chose **Blockchain** as my technical topic.  
-- Wrote a detailed article in markdown format.  
-- Uploaded the article to GitHub for reference.  
-
  [My GitHub Repo](https://github.com/Suraj-Hulagur/Technical-Resource-Article/tree/main)  
 
 ---
-
-### Conclusion
-This task helped me get comfortable with markdown formatting and taught me how to structure technical articles clearly and effectively.  
-
 
 <hr style="border:2.5px solid white; margin: 35px 0;">
 
@@ -264,9 +242,7 @@ I explored example circuits and simulated a simple radar system using an ultraso
 
 ---
 
-### Evidence
-Here are photos of my simulation work:  
-
+### Screenshots
 ![Tinkercad 1](https://i.postimg.cc/HLJ89Pv1/Screenshot-2025-09-10-013422.png)  
 
 ![Tinkercad 2](https://i.postimg.cc/j5p1S9mx/Screenshot-2025-09-10-013543.png)  
@@ -274,7 +250,7 @@ Here are photos of my simulation work:
 ---
 
 ### Conclusion
-This task introduced me to **Tinkercad**, the working of **ultrasonic sensors and servo motors**, and the basics of **radar technology**.  
+This task introduced me to **Tinkercad**, the working of **ultrasonic sensors and servo motors**.
 
 
 <hr style="border:2.5px solid white; margin: 35px 0;">
@@ -286,7 +262,6 @@ This task introduced me to **Tinkercad**, the working of **ultrasonic sensors an
 
 ### Introduction
 This task focused on controlling the speed of a **DC motor** using an **L298N motor driver** and **Arduino UNO**.  
-I simulated the setup on Tinkercad and also tested it on hardware.  
 
 ---
 
@@ -298,16 +273,9 @@ I simulated the setup on Tinkercad and also tested it on hardware.
 ---
 
 ### Screenshots
-Here is a photo from my hardware experiment:  
-
 ![DC Motor Control](https://i.postimg.cc/c1vJr5kQ/Whats-App-Image-2025-09-06-at-11-17-00-e75f9a48.jpg)  
 
 ---
-
-### Conclusion
-This task helped me understand **motor driver ICs** and gave me hands-on practice in controlling motor speed through code and hardware.  
-
-
 <hr style="border:2.5px solid white; margin: 35px 0;">
 
 
@@ -329,8 +297,6 @@ I also learned how to configure the Arduino IDE to upload code to the ESP32.
 ---
 
 ### Screenshots
-Here is a photo of my ESP32 setup:  
-
 ![ESP32 LED Toggle](https://i.postimg.cc/dVVNYX9y/Whats-App-Image-2025-09-11-at-16-05-13-eba5b833.jpg)  
 
 ---
@@ -412,9 +378,7 @@ The alarm triggers based on door open/closed and key pressed/not pressed conditi
 
 ### What I Did
 - Derived the simplified logic using **K-maps**.  
-- Built the circuit using **logic gates and push buttons**.  
-- Verified the working conditions for the buzzer/LED output.  
-
+- Built the circuit theoretically using **logic gates**.  
 ---
 
 ### Screenshot
@@ -432,12 +396,6 @@ This task gave me practical experience in using **K-maps** to simplify logic and
 # **TASK 15: Active Participation**
 
 ---
-
-### Introduction
-This task focused on **active participation** in technical events and completing online courses (MOOCs).  
-
----
-
 ### What I Did
 - Participated in the **CTARA Hackathon** and secured Runner-Up.  
 - Attended the **Byte and Bolt Workshop**.  
