@@ -343,17 +343,8 @@ This task gave me practical experience in using **K-maps** to simplify logic and
 In this task, I studied the **MQ135 gas sensor datasheet** and documented its working principle, calibration, and behavior.  
 
 ---
-### Report
-- **MQ135** is a **SnO₂-based semiconductor air-quality sensor** with a heated element whose resistance (Rs) changes with gas concentration.  
-- Operates at **5 V**, uses a **load resistor (RL)** for readout, and is sensitive to **NH₃, CO₂, alcohol, benzene, smoke,** and others.  
-- **Calibration** follows log–log curves, normalized to R₀ at reference conditions, mapping Rs/R₀ to ppm. Ambient temperature and humidity affect Rs as shown in datasheet plots.  
-- **Multi-gas sensitivity curves** exhibit power-law behavior compatible with the **Freundlich adsorption model** on SnO₂.  
-- This explains the **non-linear response** of the sensor and helps improve empirical fitting for real-world gas estimation.  
 
----
-### Sources
-- [Olimex MQ135 Datasheet](https://www.olimex.com/Products/Components/Sensors/Gas/SNS-MQ135/resources/SNS-MQ135.pdf)  
-- [Winsen MQ135 Manual](https://www.winsen-sensor.com/d/files/PDF/Semiconductor%20Gas%20Sensor/MQ135%20(Ver1.4)%20-%20Manual.pdf)  
+[Click for report](https://github.com/Suraj-Hulagur/MARVEL-TASKS-REPORT/blob/main/datasheet%20report%20writing.md)
 
 ---
 
