@@ -79,9 +79,8 @@ In this task, I practiced **basic command line operations** on Ubuntu got famili
 ---
 
 ###  Photos
-![Ubuntu Terminal 1](https://i.postimg.cc/3J7KK2gF/Whats-App-Image-2025-09-09-at-07-59-53-67789f4c.jpg)  
-![Ubuntu Terminal 2](https://i.postimg.cc/kXc7DDs3/Whats-App-Image-2025-09-09-at-07-59-54-429a4e62.jpg)  
-
+![Ubuntu Terminal 1](https://i.postimg.cc/kXc7DDs3/Whats-App-Image-2025-09-09-at-07-59-54-429a4e62.jpg)  
+![Ubuntu Terminal 2](https://i.postimg.cc/3J7KK2gF/Whats-App-Image-2025-09-09-at-07-59-53-67789f4c.jpg)  
 ---
 <hr style="border:2.5px solid white; margin: 35px 0;">
 
