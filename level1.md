@@ -11,7 +11,7 @@ I understood how version control helps track changes, collaborate with teams, an
 ### What I Did
 - Installed Git and initialized a local repository using `git init`.  
 - Created multiple commits and practiced branching with multiple branches.  
-- Practiced git merge to combine branches and understood fast-forward vs three-way merge.  
+- Practiced git merge to combine branches and understood fast forward vs three way merge.  
 - Used git rebase to rewrite commit history and maintain a linear project timeline.  
 - Experimented with git reset --hard to move HEAD to previous commits and undo changes.  
 - Applied git revert to safely undo commits without rewriting history.  
@@ -29,7 +29,7 @@ I understood how version control helps track changes, collaborate with teams, an
 ---
 
 ### Conclusion
-This task gave me hands-on experience with Git version control workflows and helped me understand branching strategies.  
+This task gave me hands on experience with Git version control workflows and helped me understand branching strategies.  
 I learned the difference between merge vs rebase, reset vs revert, and when to use cherry-pick for selective commits.  
 
 ---
@@ -65,7 +65,7 @@ I understood why AWS is preferred over platforms like Vercel and learnt that it 
 ---
 
 ### Conclusion
-This task gave me hands-on experience with cloud infrastructure deployment and Linux server administration.  
+This task gave me hands on experience with cloud infrastructure deployment and Linux server administration.  
 I learned the importance of security configuration and cost management when working with AWS services.  
 
 ---
@@ -116,14 +116,14 @@ I learned how tools like Nmap are used to analyze systems and identify possible 
 
 
 ---
-# **TASK 6: Socket.IO – Real-Time Two-Way Chat Application**
+# **TASK 6: Socket.IO – Real Time Two Way Chat Application**
 
 ---
 
 ### Introduction
-In this task, I developed a real-time chat application using Node.js and Socket.IO to understand how bi-directional communication works between a client and a server.  
+In this task, I developed a real time chat application using Node.js and Socket.IO to understand how bidirectional communication works between a client and a server.  
 Unlike traditional HTTP based communication, Socket.IO enables persistent connections using WebSockets, allowing messages to be exchanged instantly.  
-This task focused on implementing and testing real-time communication with multiple clients connected simultaneously.
+This task focused on implementing and testing real time communication with multiple clients connected simultaneously.
 
 ---
 
@@ -139,9 +139,9 @@ This task focused on implementing and testing real-time communication with multi
 ---
 
 ### Technologies Used
-- **Node.js** – Server-side JavaScript runtime  
+- **Node.js** – Server side JavaScript runtime  
 - **Express.js** – Web application framework  
-- **Socket.IO** – Real-time, bi-directional communication  
+- **Socket.IO** – Real time, bidirectional communication  
 - **HTML & CSS** – Frontend interface  
 - **Git & GitHub** – Version control and repository hosting
 
@@ -152,7 +152,7 @@ Each browser tab represents a Socket.IO client.
 When a user opens the application, the client emits a join event with the username.  
 Messages are sent using Socket.IO events instead of HTTP requests.  
 The server listens for message events and broadcasts them to all connected clients.  
-This enables real-time two-way communication without page refreshes.
+This enables real time two way communication without page refreshes.
 
 ---
 
@@ -182,7 +182,7 @@ This task provided hands on experience with building a real time web application
 
 ### Introduction
 In this task, I studied the OSI (Open Systems Interconnection) model and understood how computer systems communicate over networks.  
-The OSI model is a 7-layer theoretical framework that standardizes network communication, while the TCP/IP model is the practical 5-layer implementation used on the internet.  
+The OSI model is a 7 layer theoretical framework that standardizes network communication, while the TCP/IP model is the practical 5 layer implementation used on the internet.  
 
 ---
 
@@ -190,8 +190,8 @@ The OSI model is a 7-layer theoretical framework that standardizes network commu
 - OSI Model 7 Layers: Application, Presentation, Session, Transport, Network, Data Link, and Physical layers.  
 - TCP/IP Model: Practical implementation merging Application, Presentation, and Session into one Application layer.  
 - Network Protocols: HTTP, FTP, SMTP, DNS, TCP, UDP, IP, and how they work across different layers.  
-- IP Addressing: Difference between IPv4 (32-bit) and IPv6 (128-bit), subnet masks, and DHCP.  
-- Transport Layer: TCP vs UDP, 3-way handshake, congestion control, and connection management.  
+- IP Addressing: Difference between IPv4 (32 bit) and IPv6 (128 bit), subnet masks, and DHCP.  
+- Transport Layer: TCP vs UDP, 3 way handshake, congestion control, and connection management.  
 - Network Devices: Routers, switches, hubs, bridges, and their roles in network communication.  
 - Network Topologies: Bus, Ring, Star, Tree, and Mesh configurations.  
 - Security: Firewalls, NAT (Network Address Translation), and packet filtering.  
@@ -225,7 +225,7 @@ Cloud computing enables users to access computing resources including servers, s
 
 Based on the degree of control users possess and the responsibility assumed by cloud providers, cloud services are primarily categorized into three models: Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS).
 
-These models provide flexibility, scalability, and cost-effectiveness for individuals and organizations alike.
+These models provide flexibility, scalability, and cost effectiveness for individuals and organizations alike.
 
 ---
 
@@ -252,7 +252,7 @@ System administrators and developers primarily utilize IaaS when they require co
 
 ## 2. Platform as a Service (PaaS)
 
-PaaS offers a pre-configured platform where developers can build, test, and deploy applications without managing servers or operating systems.
+PaaS offers a pre configured platform where developers can build, test, and deploy applications without managing servers or operating systems.
 
 Cloud providers handle infrastructure management, runtime environments, and system updates.
 
@@ -321,7 +321,7 @@ Each model addresses specific requirements, and collectively they enhance the ef
 ---
 
 ### Introduction
-In this task, I studied and implemented encryption and decryption techniques to understand how secure communication works in real-world applications.  
+In this task, I studied and implemented encryption and decryption techniques to understand how secure communication works in real world applications.  
 The focus was on learning classical ciphers, modern encryption concepts, and building a simple secure messaging flow in Python.  
 I also explored the difference between encryption and hashing, the role of symmetric and asymmetric keys, and how prime numbers are used in RSA encryption.
 
@@ -330,7 +330,7 @@ I also explored the difference between encryption and hashing, the role of symme
 ### What I Did
 - Studied basic concepts of ciphers, keys, and secure communication.  
 - Learned classical ciphers including Caesar cipher, Vigenère cipher, and Substitution cipher to understand core encryption logic.  
-- Understood why SHA256 is a hashing algorithm (one-way, irreversible) and not an encryption method.  
+- Understood why SHA256 is a hashing algorithm (one way, irreversible) and not an encryption method.  
 - Learned the difference between symmetric encryption (same key) and asymmetric encryption (public and private keys).  
 - Studied how RSA uses very large prime numbers to generate secure public–private key pairs.  
 - Implemented a secure messaging simulation in Python using the PyCryptodome library and AES symmetric encryption.  
@@ -384,9 +384,71 @@ The complete source code for this task is available on GitHub:
 ---
 ### Conclusion
 This task helped me gain practical understanding of encryption techniques and secure communication workflows.  
-By implementing encryption and decryption using Python and PyCryptodome, I learned how real-world secure messaging systems work internally.  
+By implementing encryption and decryption using Python and PyCryptodome, I learned how real world secure messaging systems work internally.  
 I understood the importance of symmetric encryption for secure data transmission, how hashing differs from encryption, and why RSA relies on prime numbers for key generation.  
 
 
 ---
+
+# **TASK 10: IP Addressing and Web Scraping – Job Listings Scraper**
+
+---
+
+### Introduction
+In this task, I explored web scraping using Python to understand how data can be programmatically extracted from websites.  
+The task also helped reinforce my understanding of IP addressing and TCP/IP communication, as web scraping relies on HTTP requests sent over the internet to a server's IP address.  
+I implemented a simple job listings scraper that extracts job related information from a static webpage.
+
+---
+
+### Web Scraping and IP Addressing
+Web scraping starts with an HTTP request sent from the client to the server.  
+This request is routed to the server's IP address using TCP/IP protocols.  
+The server responds with HTML content, which is then parsed locally.  
+Extracted data is processed and displayed to the user.  
+This demonstrates how application layer protocols rely on underlying network layers for communication.
+
+---
+
+### What I Did
+- Studied the basics of web scraping and how HTTP requests work.  
+- Used Python to send HTTP GET requests to a job listings webpage.  
+- Parsed HTML content using BeautifulSoup.  
+- Extracted job information
+- Displayed the extracted data in the terminal.
+
+
+---
+
+
+### Website Used for Scraping
+To safely demonstrate web scraping concepts, I used a static job listings page:  
+[click](https://realpython.github.io/fake-jobs/)  
+
+This allowed me to focus on HTML parsing and data extraction without dealing with JavaScript rendered content or scraping limitations.
+
+---
+
+### Screenshots
+![Job Scraper Output](https://i.postimg.cc/j2Dsvqv8/Screenshot-2026-01-13-091426.png)
+
+---
+
+### GitHub Repository
+The complete source code for this task is available on GitHub:  
+[click](https://github.com/Suraj-Hulagur/job_scrapper)  
+
+The repository contains:
+- Python script for job scraping
+- Required library usage
+- Clean and minimal project structure
+
+---
+
+### Conclusion
+This task helped me understand how web scraping works internally and how internet communication relies on IP addressing and standard protocols.  
+By implementing a job listings scraper in Python, I gained practical experience in sending HTTP requests, parsing HTML content, and extracting meaningful data from webpages.
+
+---
+
 
