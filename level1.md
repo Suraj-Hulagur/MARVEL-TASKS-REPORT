@@ -63,7 +63,7 @@ This task provided practical exposure to NoSQL database design, AWS cloud servic
 
 Amazon DynamoDB is a fully managed NoSQL database service designed for high performance and scalability.
 
-Unlike relational databases that rely on structured tables and SQL queries, DynamoDB stores data in key-value or document format and is accessed through API operations.
+Unlike relational databases that rely on structured tables and SQL queries, DynamoDB stores data in key value or document format and is accessed through API operations.
 
 ### Key Features
 
@@ -81,7 +81,7 @@ The DynamoDB table was configured as follows:
 
 - **Table Name:** `users`
 - **Partition Key:** `username` (String)
-- **Capacity Mode:** On-demand
+- **Capacity Mode:** On demand
 
 Only a partition key was used to ensure direct and efficient lookups.
 
@@ -119,7 +119,7 @@ The application follows a modular structure:
 - Amazon DynamoDB
 - Boto3 (AWS SDK for Python)
 - bcrypt (Password hashing)
-- python-dotenv (Environment configuration)
+- python dotenv (Environment configuration)
 
 ---
 
@@ -160,9 +160,9 @@ The application follows a modular structure:
 
 - Passwords are stored only in hashed format.
 - Plain text passwords are never saved.
-- Account lock mechanism prevents brute-force attacks.
+- Account lock mechanism prevents brute force attacks.
 - IAM policies restrict database access.
-- On-demand capacity ensures scalability.
+- On demand capacity ensures scalability.
 
 ---
 
@@ -170,13 +170,13 @@ The application follows a modular structure:
 
 | Feature | MySQL (SQL) | DynamoDB (NoSQL) |
 |----------|-------------|------------------|
-| Data Structure | Tables with rows and columns | Key-value / Document |
+| Data Structure | Tables with rows and columns | Key value / Document |
 | Schema | Fixed | Flexible |
-| Query Language | SQL | API-based |
+| Query Language | SQL | API based |
 | Scaling | Vertical | Horizontal |
 | Use Case | Structured relational data | Distributed scalable systems |
 
-DynamoDB is suitable for authentication systems requiring fast key-based lookups and scalability.
+DynamoDB is suitable for authentication systems requiring fast key based lookups and scalability.
 
 ---
 
@@ -223,7 +223,7 @@ https://github.com/Suraj-Hulagur/secure-login-DynamoDB-.git
 
 ## 14. Conclusion
 
-This task provided hands-on experience in designing and implementing a secure login system using a cloud-based NoSQL database.
+This task provided hands on experience in designing and implementing a secure login system using a cloud based NoSQL database.
 
 Through this implementation, I gained deeper understanding of DynamoDB architecture, primary key design, security best practices, and AWS service integration.
 
@@ -264,7 +264,178 @@ This task gave me hands on experience with cloud infrastructure deployment and L
 I learned the importance of security configuration and cost management when working with AWS services.  
 
 ---
+# TASK 4: AWS CloudFront - Serve content from multiple S3 buckets
 
+## Introduction
+
+This task focuses on implementing a content delivery architecture using Amazon S3 and Amazon CloudFront. The objective was to understand how static and dynamic content can be stored across multiple S3 buckets and delivered efficiently through a CloudFront distribution.
+
+Amazon S3 is an object storage service designed for high durability, scalability, and availability. Amazon CloudFront is a global Content Delivery Network that caches content at edge locations to reduce latency and improve performance for end users worldwide.
+
+This task demonstrates how multiple S3 buckets can act as separate origins and how content can be delivered in a structured and scalable manner.
+
+---
+
+## Objective
+
+To configure an architecture where:
+
+• Multiple Amazon S3 buckets store different components of a web application  
+• Content is served from more than one S3 bucket  
+• Amazon CloudFront distribution is created for global delivery  
+• Static website hosting is enabled  
+• Proper access policies are configured  
+
+---
+
+## Architecture Overview
+
+The architecture implemented consists of the following components:
+
+1. Primary S3 Bucket  
+   Used for hosting the main website content including the index file  
+
+2. Secondary S3 Bucket  
+   Used for storing additional resources such as images and dynamic content pages  
+
+3. Amazon CloudFront Distribution  
+   Configured to serve content from S3 origins and enable global caching  
+
+End users access the application through the CloudFront distribution domain, which retrieves content from the respective S3 origins.
+
+---
+
+## S3 Bucket Configuration
+
+Two S3 buckets were created in the Asia Pacific Mumbai region:
+
+• suraj static content  
+• suraj dynamic content  
+
+### Static Bucket Configuration
+
+The static bucket was configured with Static Website Hosting enabled.  
+The index document was set as:
+
+index.html  
+
+Public read access was granted through a bucket policy to allow content retrieval.
+
+The index file contains:
+
+• A heading identifying the main website  
+• A reference to an image stored in the second bucket  
+• Cross bucket content loading through direct object URL  
+
+This demonstrates inter bucket content serving.
+
+### Dynamic Bucket Configuration
+
+The dynamic bucket stores:
+
+• image.jpeg  
+• dynamic.html  
+
+Public read permissions were granted to allow object access.  
+This bucket acts as a secondary content origin.
+
+---
+
+## Static Website Implementation
+
+The main website hosted in the static bucket includes the following logic:
+
+The HTML page loads an image from the dynamic bucket using the object URL format:
+
+https://bucket-name.s3.region.amazonaws.com/object-name
+
+This confirms that content is successfully being served from multiple S3 buckets within a single web page.
+
+The final output page displays:
+
+Main Website Static Bucket  
+Image below comes from second bucket  
+Image rendered successfully from secondary bucket  
+
+This verifies correct bucket policy configuration and cross bucket accessibility.
+
+Screenshot:  
+![Final output](https://i.postimg.cc/C1nGkrLB/Screenshot-2026-02-27-025209.png)
+
+---
+
+## CloudFront Distribution Configuration
+
+A CloudFront distribution was created with the following characteristics:
+
+• Origin configured as S3 bucket  
+• Default cache behavior applied  
+• HTTP and HTTPS enabled  
+• Global edge locations selected  
+• Pay as you go billing model  
+
+CloudFront was granted access to the S3 origin using recommended origin settings.  
+This ensures secure origin communication and proper access control.
+
+Screenshot:  
+![Distribution](https://i.postimg.cc/3N7kNtk1/Screenshot-2026-02-27-014808.png)
+
+CloudFront enhances:
+
+• Reduced latency  
+• Improved availability  
+• Scalable delivery  
+• Edge caching  
+
+---
+
+## Security Considerations
+
+The following configurations were implemented:
+
+• Block Public Access disabled only where required  
+• Bucket policies limited to GetObject action  
+• Controlled access between CloudFront and S3  
+• Regional deployment in ap south 1  
+
+These steps ensure that access is restricted to required operations only.
+
+---
+
+## Key Concepts Learned
+
+During this task, the following concepts were understood in depth:
+
+• Difference between object storage and content delivery networks  
+• Role of bucket policies in access management  
+• Static website hosting configuration in S3  
+• How CloudFront acts as a caching layer  
+• Cross bucket resource referencing  
+• Importance of origin configuration  
+
+---
+
+## Result
+
+The system successfully demonstrated:
+
+• Hosting of static website content in one S3 bucket  
+• Serving of image and additional content from a second S3 bucket  
+• Configuration of CloudFront distribution for global delivery  
+• Proper integration between S3 and CloudFront  
+
+The website rendered correctly and displayed content from multiple S3 buckets, validating the architecture.
+
+---
+
+## Conclusion
+
+This task provided practical exposure to building a scalable and globally distributed content delivery architecture using Amazon S3 and Amazon CloudFront.
+
+By configuring multiple S3 buckets and integrating them with CloudFront, a structured and performance optimized delivery system was achieved.
+
+The implementation demonstrates real world use of cloud storage and CDN services in designing modern web infrastructure.
+---
 # **TASK 5: Kali Linux – Basic Penetration Testing**
 
 ---
