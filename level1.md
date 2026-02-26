@@ -33,6 +33,201 @@ This task gave me hands on experience with Git version control workflows and hel
 I learned the difference between merge vs rebase, reset vs revert, and when to use cherry-pick for selective commits.  
 
 ---
+# TASK 2: Database Task – DynamoDB  
+## Secure User Login System
+
+---
+
+## 1. Introduction
+
+In this task, I implemented a secure user authentication system using Amazon DynamoDB, a fully managed NoSQL database service provided by AWS.
+
+The objective was to design and develop a login system that allows users to register and authenticate using a username and password while ensuring secure password storage through hashing mechanisms.
+
+This task provided practical exposure to NoSQL database design, AWS cloud services, and secure backend development practices.
+
+---
+
+## 2. Objectives
+
+- Understand the fundamentals of NoSQL databases.
+- Learn how DynamoDB stores and retrieves data.
+- Implement a secure user registration and login workflow.
+- Interact with AWS DynamoDB using Boto3.
+- Compare relational databases with NoSQL databases.
+- Apply security best practices such as password hashing and account lock mechanisms.
+
+---
+
+## 3. Overview of DynamoDB
+
+Amazon DynamoDB is a fully managed NoSQL database service designed for high performance and scalability.
+
+Unlike relational databases that rely on structured tables and SQL queries, DynamoDB stores data in key-value or document format and is accessed through API operations.
+
+### Key Features
+
+- Automatic horizontal scaling
+- Low latency read and write operations
+- Flexible schema design
+- High availability and durability
+- Seamless AWS integration
+
+---
+
+## 4. Table Design and Schema
+
+The DynamoDB table was configured as follows:
+
+- **Table Name:** `users`
+- **Partition Key:** `username` (String)
+- **Capacity Mode:** On-demand
+
+Only a partition key was used to ensure direct and efficient lookups.
+
+### Attributes Stored Per User
+
+- `username`
+- `password_hash`
+- `created_at`
+- `last_login`
+- `login_attempts`
+- `account_locked`
+
+This schema enables secure authentication and protects against repeated failed login attempts.
+
+---
+
+## 5. System Architecture
+
+User → Python CLI Application → Boto3 SDK → DynamoDB Table
+
+The application follows a modular structure:
+
+- `app.py` – Handles user interaction
+- `auth_service.py` – Contains authentication logic
+- `database.py` – Manages DynamoDB connection
+- `utils.py` – Provides helper functions
+
+---
+
+## 6. Implementation Details
+
+### Technologies Used
+
+- Python 3
+- Amazon DynamoDB
+- Boto3 (AWS SDK for Python)
+- bcrypt (Password hashing)
+- python-dotenv (Environment configuration)
+
+---
+
+### Registration Workflow
+
+1. User enters username and password.
+2. System checks if the username already exists.
+3. Password is hashed using bcrypt.
+4. User record is stored using `put_item`.
+5. Login attempts are initialized to 0.
+6. Account lock flag is set to False.
+
+---
+
+### Login Workflow
+
+1. User record is retrieved using `get_item`.
+2. System verifies if the account is locked.
+3. Password is validated using bcrypt.
+4. On successful login:
+   - `last_login` is updated.
+   - `login_attempts` is reset.
+5. On failed login:
+   - `login_attempts` is incremented.
+   - Account is locked after three failed attempts.
+
+---
+
+### DynamoDB Operations Used
+
+- `put_item()` – Insert new user
+- `get_item()` – Retrieve user by primary key
+- `update_item()` – Update attributes
+
+---
+
+## 7. Security Considerations
+
+- Passwords are stored only in hashed format.
+- Plain text passwords are never saved.
+- Account lock mechanism prevents brute-force attacks.
+- IAM policies restrict database access.
+- On-demand capacity ensures scalability.
+
+---
+
+## 8. SQL vs NoSQL Comparison
+
+| Feature | MySQL (SQL) | DynamoDB (NoSQL) |
+|----------|-------------|------------------|
+| Data Structure | Tables with rows and columns | Key-value / Document |
+| Schema | Fixed | Flexible |
+| Query Language | SQL | API-based |
+| Scaling | Vertical | Horizontal |
+| Use Case | Structured relational data | Distributed scalable systems |
+
+DynamoDB is suitable for authentication systems requiring fast key-based lookups and scalability.
+
+---
+
+## 9. Challenges Faced
+
+- Schema mismatch between table definition and application code.
+- IAM permission configuration errors.
+- Understanding primary key requirements in DynamoDB.
+
+These issues were resolved by recreating the table with the correct partition key and configuring proper IAM permissions.
+
+---
+
+## 10. Example Outputs
+
+- Successful user registration
+- Successful login
+- Failed login attempts
+- Account locked after multiple incorrect attempts
+
+## 11.Screenshots
+![1](https://i.postimg.cc/bJJXw3sR/Whats-App-Image-2026-02-26-at-22-53-08.jpg) 
+![2](https://i.postimg.cc/YC6Bnv5v/Whats-App-Image-2026-02-26-at-22-53-20.jpg)
+
+---
+
+## 12. GitHub Repository
+
+Project Repository:  
+https://github.com/Suraj-Hulagur/secure-login-DynamoDB-.git
+
+---
+
+## 13. Learning Outcomes
+
+- Practical experience with Amazon DynamoDB.
+- Understanding of NoSQL database design.
+- Implementation of secure password hashing.
+- Performing CRUD operations using Boto3.
+- Managing IAM permissions for secure access.
+- Building a modular backend authentication system.
+
+---
+
+## 14. Conclusion
+
+This task provided hands-on experience in designing and implementing a secure login system using a cloud-based NoSQL database.
+
+Through this implementation, I gained deeper understanding of DynamoDB architecture, primary key design, security best practices, and AWS service integration.
+
+The project demonstrates how scalable and secure backend systems can be built using modern cloud technologies.
 
 
 # **TASK 3: Create an Application on EC2 Instance**
