@@ -79,20 +79,20 @@ Unlike relational databases that rely on structured tables and SQL queries, Dyna
 
 The DynamoDB table was configured as follows:
 
-- **Table Name:** `users`
-- **Partition Key:** `username` (String)
+- **Table Name:** users
+- **Partition Key:** username (String)
 - **Capacity Mode:** On demand
 
 Only a partition key was used to ensure direct and efficient lookups.
 
 ### Attributes Stored Per User
 
-- `username`
-- `password_hash`
-- `created_at`
-- `last_login`
-- `login_attempts`
-- `account_locked`
+- username
+- password_hash
+- created_at
+- last_login
+- login_attempts
+- account_locked
 
 This schema enables secure authentication and protects against repeated failed login attempts.
 
@@ -104,10 +104,10 @@ User → Python CLI Application → Boto3 SDK → DynamoDB Table
 
 The application follows a modular structure:
 
-- `app.py` – Handles user interaction
-- `auth_service.py` – Contains authentication logic
-- `database.py` – Manages DynamoDB connection
-- `utils.py` – Provides helper functions
+- app.py – Handles user interaction
+- auth_service.py – Contains authentication logic
+- database.py – Manages DynamoDB connection
+- utils.py – Provides helper functions
 
 ---
 
@@ -128,7 +128,7 @@ The application follows a modular structure:
 1. User enters username and password.
 2. System checks if the username already exists.
 3. Password is hashed using bcrypt.
-4. User record is stored using `put_item`.
+4. User record is stored using put_item.
 5. Login attempts are initialized to 0.
 6. Account lock flag is set to False.
 
@@ -136,23 +136,23 @@ The application follows a modular structure:
 
 ### Login Workflow
 
-1. User record is retrieved using `get_item`.
+1. User record is retrieved using get_item.
 2. System verifies if the account is locked.
 3. Password is validated using bcrypt.
 4. On successful login:
-   - `last_login` is updated.
-   - `login_attempts` is reset.
+   - last_login is updated.
+   - login_attempts is reset.
 5. On failed login:
-   - `login_attempts` is incremented.
+   - login_attempts is incremented.
    - Account is locked after three failed attempts.
 
 ---
 
 ### DynamoDB Operations Used
 
-- `put_item()` – Insert new user
-- `get_item()` – Retrieve user by primary key
-- `update_item()` – Update attributes
+- put_item() – Insert new user
+- get_item() – Retrieve user by primary key
+- update_item() – Update attributes
 
 ---
 
