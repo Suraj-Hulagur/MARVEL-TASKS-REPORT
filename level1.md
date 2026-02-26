@@ -9,7 +9,7 @@ I understood how version control helps track changes, collaborate with teams, an
 ---
 
 ### What I Did
-- Installed Git and initialized a local repository using `git init`.  
+- Installed Git and initialized a local repository using git init.  
 - Created multiple commits and practiced branching with multiple branches.  
 - Practiced git merge to combine branches and understood fast forward vs three way merge.  
 - Used git rebase to rewrite commit history and maintain a linear project timeline.  
@@ -99,9 +99,6 @@ This schema enables secure authentication and protects against repeated failed l
 ---
 
 ## 5. System Architecture
-
-User → Python CLI Application → Boto3 SDK → DynamoDB Table
-
 The application follows a modular structure:
 
 - app.py – Handles user interaction
@@ -243,8 +240,8 @@ I understood why AWS is preferred over platforms like Vercel and learnt that it 
 - Selected Mumbai region (ap-south-1) for lowest latency from India.  
 - Launched a t3.micro instance(more efficient than t2.micro) with Amazon Linux 2023 AMI.  
 - Configured security groups to allow HTTP (port 80) and SSH (port 22) access.  
-- Connected to EC2 locally via SSH using WSL with `.pem` key file.  
-- Installed and configured Apache web server using `yum` package manager.  
+- Connected to EC2 locally via SSH using WSL with .pem key file.  
+- Installed and configured Apache web server using yum package manager.  
 - Deployed a simple HTML application and accessed it via public IP.  
 - Set up billing alerts to avoid unexpected charges and terminated instance after testing.  
 
@@ -494,7 +491,7 @@ This task focused on implementing and testing real time communication with multi
 ---
 
 ### What I Did
-- Created a Node.js project and initialized it using `npm`.  
+- Created a Node.js project and initialized it using npm.  
 - Installed required dependencies: Express and Socket.IO.  
 - Implemented a backend server to handle Socket.IO connections and events.  
 - Configured the server to:
