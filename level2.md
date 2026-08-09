@@ -62,6 +62,53 @@ The complete source code and Jenkinsfile for this task are available on GitHub:
 [Click](https://github.com/Suraj-Hulagur/jenkins-ci-demo)
 
 ---
+# **TASK 3: SSH – Scripted Key Discovery and Transfer Between Servers**
+
+---
+
+### Introduction
+
+For this task I wrote a shell script that logs into a server over SSH, searches it for private and public key files, and transfers whatever it finds to a second server. To do this safely without touching any real machine, I set up two Docker containers to act as two independent servers, connected them on their own network, and used those as the source and destination for the script.
+
+---
+
+### Setup
+
+I created a Docker network so the two containers could reach each other, then started two plain Ubuntu containers on it, naming them serverA and serverB. SSH doesn't come installed on a base Ubuntu image, so I installed and started the SSH server on both containers separately, then set a root password on each one so the script would have something to authenticate with.
+
+I ran into one snag here. Ubuntu's default SSH configuration blocks root login over a password by default, so my first attempt at running the script failed with a permission denied error even though the password was correct. I fixed this by editing sshd_config on both containers to explicitly allow root login and password authentication, then restarted SSH on each before trying again.
+
+To have something realistic for the script to find, I generated a test RSA key pair inside serverA using ssh-keygen, which created a private and a public key file in a keys folder.
+
+---
+
+### The Script
+
+The script takes a source host and a destination host, SSHes into the source and runs a find command across the entire filesystem looking for anything matching common key file patterns, private keys, PEM files, and public keys. If it finds anything, it loops through each result, pulls the file down locally using scp, then pushes it back up to the destination server, cleaning up the temporary local copy each time. I used sshpass so the script could supply the password automatically instead of needing someone to type it in during each connection.
+
+---
+
+### Results
+
+Running the script against the two containers, it connected to serverA and found five key files, three SSH host keys that get generated automatically whenever SSH is installed, plus the private and public key I had generated for testing. All five were transferred one by one to serverB. Checking the destination folder afterward showed all five files present with matching sizes, confirming the whole flow worked end to end, logging in, searching, and uploading, without needing any manual steps once the script was run.
+
+---
+
+### Screenshots
+
+**Docker network and containers created, SSH installed on both servers**
+
+[![Screenshot-2026-08-09-232249.png](https://i.postimg.cc/T27YBcwB/Screenshot-2026-08-09-232249.png)](https://postimg.cc/dDCYyrG9)
+
+**IP addresses of both containers on the custom network**
+
+[![Screenshot-2026-08-09-233232.png](https://i.postimg.cc/KzcxHKyY/Screenshot-2026-08-09-233232.png)](https://postimg.cc/GBfWBmt0)
+
+
+
+**Script running successfully: connecting, finding five key files, and transferring all of them, followed by confirmation on the destination server**
+[![Screenshot-2026-08-09-234020.png](https://i.postimg.cc/1tSrhQWc/Screenshot-2026-08-09-234020.png)](https://postimg.cc/Lqy1LrFn)
+---
 # **TASK 5: Wireshark – Packet Capture and Network Traffic Analysis**
 
 ---
@@ -369,13 +416,18 @@ This task gave me a practical understanding of how a network scan actually works
 ---
 
 ### Screenshots
+
 **Full scan with service and OS detection**
+
 [![Screenshot-2026-08-08-210308.png](https://i.postimg.cc/g2kFVx3z/Screenshot-2026-08-08-210308.png)](https://postimg.cc/xc74YTsh)
+
 
 
 **Saved scan output confirmed with cat**
 [![Screenshot-2026-08-08-210448.png](https://i.postimg.cc/L68NvL0R/Screenshot-2026-08-08-210448.png)](https://postimg.cc/gr1V2XWB)
 ---
+
+
 
 
 
