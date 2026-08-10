@@ -107,7 +107,9 @@ Running the script against the two containers, it connected to serverA and found
 
 
 **Script running successfully: connecting, finding five key files, and transferring all of them, followed by confirmation on the destination server**
+
 [![Screenshot-2026-08-09-234020.png](https://i.postimg.cc/1tSrhQWc/Screenshot-2026-08-09-234020.png)](https://postimg.cc/Lqy1LrFn)
+
 ---
 # **TASK 5: Wireshark – Packet Capture and Network Traffic Analysis**
 
@@ -165,7 +167,9 @@ The capture confirmed several things in practice rather than just in theory. Pla
 [![Screenshot-2026-08-09-043002.png](https://i.postimg.cc/rsJ1410K/Screenshot-2026-08-09-043002.png)](https://postimg.cc/m1P1fFSs)
 
 **Statistics I/O Graph showing traffic over time with TCP errors marked**
+
 [![Screenshot-2026-08-09-043046.png](https://i.postimg.cc/kXJFmpzq/Screenshot-2026-08-09-043046.png)](https://postimg.cc/Btz15MJV)
+
 ---
 
 # **TASK 6: Docker – Containers, Images, and Dockerfiles**
@@ -283,6 +287,55 @@ Both containers ran successfully side by side on the same bridge network. The ch
 
 The complete source code and Dockerfile for this task are available on GitHub:
 [Click](https://github.com/Suraj-Hulagur/socketio_chat)
+
+---
+
+# **TASK 8: Web Scraping and Automation – Flight Ticket Price Analysis**
+
+---
+
+### Introduction
+
+For this task I built a script that automatically searches for flights on Kayak, scrapes the prices shown on the page, saves them into a CSV file, and emails that file out. I used Selenium to control a real Chrome browser and pull data off a page that loads everything dynamically through JavaScript, rather than a static page you could just download and parse directly. I searched for flights from Bengaluru to Los Angeles for this run.
+
+---
+
+### What I Did
+
+* Set up Selenium with ChromeDriver, using webdriver manager so the correct driver version gets downloaded automatically instead of managing it by hand.
+* Pointed the script at a direct Kayak search results URL for a Bengaluru to Los Angeles flight instead of trying to fill in the search form through Selenium, since Kayak's form is heavy JavaScript and more fragile to automate reliably.
+* Wrote the results into a CSV file with the route and the scraped price text.
+* Set up a Gmail App Password, sending mail through smtplib, and used that to send the CSV as an email attachment once scraping finished.
+
+---
+
+### Selenium and Why It Was Needed
+
+Selenium is a browser automation tool that controls a real browser rather than just downloading a page's raw HTML. This matters for a site like Kayak, where the flight results are not present in the initial page source at all and only appear after JavaScript runs and fetches the data separately. A simple request to the page would return an almost empty shell, so Selenium's ability to actually load the page like a real browser and wait for content to render was necessary to get anything useful out of it.
+
+---
+
+### Bot Detection Challenge
+ 
+The most significant obstacle in this task was not the scraping logic itself but getting past Kayak's bot detection. Running Chrome in headless mode, the default and most efficient way to run Selenium, triggered Kayak's detection immediately and returned a page explaining that it believed the request was coming from a bot rather than a person. Running a full, visible instance of Chrome instead, along with hiding a few of the more obvious signs that the browser was being automated, was enough to get past this and load the real search results consistently.
+
+### Results
+
+The script successfully loaded real Kayak search results for Bengaluru to Los Angeles and captured genuine prices ranging from around 554 dollars up to over 1000 dollars, along with details like Economy Basic fare labels that were picked up alongside the prices. Unique price entries were saved to a CSV file, and the script then successfully sent that CSV as an email attachment using Gmail's SMTP server.
+
+---
+
+### Screenshots
+
+**Kayak search results loading successfully after switching to a visible browser and hiding automation signals**
+[![Screenshot-2026-08-10-072659.png](https://i.postimg.cc/wMr6P43h/Screenshot-2026-08-10-072659.png)](https://postimg.cc/LgzKgTtX)
+
+**Terminal output showing scraped prices, the CSV being saved, and the email being sent successfully**
+[![Screenshot-2026-08-10-073550.png](https://i.postimg.cc/vZrsLZ7v/Screenshot-2026-08-10-073550.png)](https://postimg.cc/21SMCmKq)
+
+**Final CSV file opened in Excel, showing the saved route and price data**
+
+[![Screenshot-2026-08-10-073649.png](https://i.postimg.cc/P5Wjz5zH/Screenshot-2026-08-10-073649.png)](https://postimg.cc/87z9TD0X)
 
 ---
 
@@ -416,14 +469,13 @@ This task gave me a practical understanding of how a network scan actually works
 ---
 
 ### Screenshots
-
 **Full scan with service and OS detection**
 
 [![Screenshot-2026-08-08-210308.png](https://i.postimg.cc/g2kFVx3z/Screenshot-2026-08-08-210308.png)](https://postimg.cc/xc74YTsh)
 
 
-
 **Saved scan output confirmed with cat**
+
 [![Screenshot-2026-08-08-210448.png](https://i.postimg.cc/L68NvL0R/Screenshot-2026-08-08-210448.png)](https://postimg.cc/gr1V2XWB)
 ---
 
