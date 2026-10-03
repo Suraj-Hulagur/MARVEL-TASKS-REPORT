@@ -110,6 +110,79 @@ Running the script against the two containers, it connected to serverA and found
 
 [![Screenshot-2026-08-09-234020.png](https://i.postimg.cc/1tSrhQWc/Screenshot-2026-08-09-234020.png)](https://postimg.cc/Lqy1LrFn)
 
+
+
+---
+# **TASK 4: Terraform**
+
+---
+
+### Introduction
+
+For this task I used Terraform to set up AWS stuff using code instead of clicking around in the console every time. You write what you want in a file and it builds it for you, and can change or delete it the same way. I started small with one EC2 instance to get the flow down, then built out a proper network around it.
+
+---
+
+### What I Did
+
+* Installed Terraform and AWS CLI, and set up a dedicated IAM user for Terraform to use instead of root.
+* Wrote a `main.tf` for a single EC2 instance and ran through `init`, `validate`, `plan`, `apply`, and `destroy` to get the full workflow down.
+* Built out a real network around it next, a VPC, a subnet inside it, an internet gateway, a route table, and a security group opening SSH, HTTP and HTTPS, with the instance running Apache through a user_data script.
+* The instance took a while to attach when I first set it up through a separate network interface resource, switched to attaching the subnet and security group directly on the instance instead, which brought the create time down to about 12 seconds.
+* Changed the instance's name tag and reapplied to see Terraform update it in place.
+* Used `terraform output` and `terraform state list` to check what was actually running, then destroyed everything and confirmed the state was empty.
+
+---
+
+### Terraform Commands
+
+| Command | What it does |
+|---|---|
+| `terraform init` | Sets up the folder and downloads the AWS provider |
+| `terraform validate` | Checks if the config file is valid |
+| `terraform plan` | Shows what's about to happen before it happens |
+| `terraform apply` | Actually creates/changes the stuff on AWS |
+| `terraform output` | Prints out values like instance id after apply |
+| `terraform state list` | Shows what resources Terraform is tracking right now |
+| `terraform destroy` | Deletes everything Terraform made |
+
+---
+
+### The Network Setup
+
+Built a VPC for the private network space, a subnet inside it for the instance to live in, an internet gateway so it could reach the internet, a route table pointing traffic to that gateway, and a security group for the right ports. All of it came up in under 15 seconds.
+
+---
+
+### Results
+
+Got the full Terraform flow working end to end, single instance first, then a complete network around it, modified a live resource and watched Terraform update it correctly, and destroyed everything cleanly with `state list` coming back empty at the end.
+
+---
+
+### Conclusion
+
+Writing the Terraform file itself was the easy part, the more useful bit was getting comfortable with `plan` before every `apply`, checking `state list` and `output` to see what's actually live, and using `destroy` to clean up properly instead of deleting things by hand in the console.
+
+---
+
+### Screenshots
+
+**terraform init and validate**
+[![Whats-App-Image-2026-10-03-at-08-55-29.jpg](https://i.postimg.cc/W1zhrmgm/Whats-App-Image-2026-10-03-at-08-55-29.jpg)](https://postimg.cc/WdRNck9t)
+
+**terraform plan showing the instance to be created**
+[![Whats-App-Image-2026-10-03-at-08-56-49.jpg](https://i.postimg.cc/L5mssjmz/Whats-App-Image-2026-10-03-at-08-56-49.jpg)](https://postimg.cc/JDd86DDn)
+
+**Network setup in the config file**
+[![Whats-App-Image-2026-10-03-at-09-14-51.jpg](https://i.postimg.cc/rsy8Tc9n/Whats-App-Image-2026-10-03-at-09-14-51.jpg)](https://postimg.cc/5YGc5hTL)
+
+**terraform apply creating the instance**
+[![Whats-App-Image-2026-10-03-at-09-00-30.jpg](https://i.postimg.cc/d1wFRvpf/Whats-App-Image-2026-10-03-at-09-00-30.jpg)](https://postimg.cc/LqCG2dHk)
+
+**terraform destroy and empty state list after**
+[![previdsfaew.webp](https://i.postimg.cc/ryhT4Bj2/previdsfaew.webp)](https://postimg.cc/s1Zbd0bT)
+
 ---
 # **TASK 5: Wireshark – Packet Capture and Network Traffic Analysis**
 
