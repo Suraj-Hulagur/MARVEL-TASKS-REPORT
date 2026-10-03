@@ -1,3 +1,59 @@
+# TASK 1: AWS Lambda – Serverless Chat App
+
+---
+
+### Introduction
+
+For this task I deployed a real-time chat app using AWS Lambda and API Gateway's WebSocket support instead of a traditional server. Messages are handled through a single Lambda function, with connections tracked in DynamoDB so the app can broadcast to everyone connected.
+
+---
+
+### Architecture
+
+- **DynamoDB table** (`ChatConnections`) – stores active connection IDs
+- **Lambda function** (`chat-handler`, Node.js) – handles all events through a single function using the WebSocket route key
+- **API Gateway WebSocket API** – routes: `$connect`, `$disconnect`, `$default`, all pointed at the same Lambda
+
+When a client connects, its connection ID gets stored in DynamoDB. When a message comes in, the Lambda scans the table and pushes that message out to every stored connection. When a client disconnects, its ID gets removed.
+
+---
+
+### Setup
+
+Created the Lambda function, gave its execution role DynamoDB access plus a custom policy for `execute-api:ManageConnections` (needed to push messages back to clients), then built the WebSocket API in API Gateway with the three routes wired to the Lambda, and deployed it to a `production` stage.
+
+---
+
+### Testing
+
+Connected two separate WebSocket clients to the deployed endpoint using `wscat`. Sent a message from one and confirmed it was broadcast and received on the other, verifying the connect, broadcast, and fan-out logic all worked correctly end to end.
+
+---
+
+### Results
+
+Serverless WebSocket chat app deployed and verified working, with two independent clients exchanging a real-time message through Lambda and API Gateway with no server to manage.
+
+---
+
+### Screenshots
+
+**Lambda function code**
+[![Whats-App-Image-2026-10-03-at-11-48-15.jpg](https://i.postimg.cc/HkTXc7kp/Whats-App-Image-2026-10-03-at-11-48-15.jpg)](https://postimg.cc/QHnHvC7P)
+
+**IAM role permissions for the Lambda function**
+[![Whats-App-Image-2026-10-03-at-11-35-37.jpg](https://i.postimg.cc/s2NhN69x/Whats-App-Image-2026-10-03-at-11-35-37.jpg)](https://postimg.cc/KKtjK5Wh)
+
+**API Gateway routes wired to the Lambda integration**
+[![Whats-App-Image-2026-10-03-at-11-37-57.jpg](https://i.postimg.cc/gj96Yx7P/Whats-App-Image-2026-10-03-at-11-37-57.jpg)](https://postimg.cc/LYTsD8Ry)
+
+**Two WebSocket clients connected, message broadcast and received**
+[![Whats-App-Image-2026-10-03-at-11-44-53.jpg](https://i.postimg.cc/kXmtzt8G/Whats-App-Image-2026-10-03-at-11-44-53.jpg)](https://postimg.cc/rzfmtsf2)
+[![Whats-App-Image-2026-10-03-at-11-44-55.jpg](https://i.postimg.cc/rFkt3tWf/Whats-App-Image-2026-10-03-at-11-44-55.jpg)](https://postimg.cc/pysTnrsj)
+
+---
+
+
 # **TASK 2: CI/CD (Continuous Integration & Continuous Delivery) - Jenkins**
 
 ---
